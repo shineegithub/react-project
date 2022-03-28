@@ -1,14 +1,16 @@
 import react from "react";
 import BurgerIngredient from "../BurgerIngredient";
+import css from "./style.module.css";
 
 const Burger = () => (
-    <div>
+    <div className={css.Burger}>
         <BurgerIngredient type="bread-top" />
         <BurgerIngredient type="salad" />
         <BurgerIngredient type="bacon" />
         <BurgerIngredient type="cheese" />
-        <BurgerIngredient type="meet" />
-        <BurgerIngredient type="" />
+        <BurgerIngredient type="meat" />
+        <BurgerIngredient type="meat" />
+        <BurgerIngredient type="bread-bottom" />
     </div>
 );
 
