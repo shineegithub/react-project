@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Burger from "../../components/Burger";
+import BuildControls from "../../components/BuildControls";
+import { type } from "@testing-library/user-event/dist/type";
 
 
 class BurgerBuilder extends Component {
@@ -12,11 +14,20 @@ class BurgerBuilder extends Component {
             meat:0,
         }
     };
+    ortsNemekh = (type) => {
+        console.log(type)
+
+        const newIngredients = { ...this.state.ingredients };
+        newIngredients[type]++;
+
+        this.setState({ ingredients: newIngredients });
+    };
+
     render() {
         return (
             <div>
                 <Burger orts={this.state.ingredients} />
-                <div> Ingredients control</div>
+                <BuildControls ortsNemekh={this.ortsNemekh}/>
             </div>
         );
     }
