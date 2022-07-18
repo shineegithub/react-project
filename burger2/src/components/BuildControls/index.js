@@ -4,10 +4,10 @@ import css from "./style.module.css";
 
 const BuildControls = props => (
     <div className={css.BuildControls}>
-        <BuildControl ortsNemekh={props.ortsNemekh} type="salad"  orts="Салад" />
-        <BuildControl ortsNemekh={props.ortsNemekh} type="bacon"  orts="Гахайн мах" />
-        <BuildControl ortsNemekh={props.ortsNemekh} type="cheese" orts="Бяслаг" />
-        <BuildControl ortsNemekh={props.ortsNemekh} type="meat"   orts="Мах" />
+        <BuildControl ortsHasakh={props.ortsHasakh}  ortsNemekh={props.ortsNemekh} disabled={props.disabledIngredients}    type="salad"  orts="Салад" />
+        <BuildControl ortsHasakh={props.ortsHasakh}  ortsNemekh={props.ortsNemekh} disabled={props.disabledIngredients}    type="bacon"  orts="Гахайн мах" />
+        <BuildControl ortsHasakh={props.ortsHasakh}  ortsNemekh={props.ortsNemekh} disabled={props.disabledIngredients}   type="cheese" orts="Бяслаг" />
+        <BuildControl ortsHasakh={props.ortsHasakh}  ortsNemekh={props.ortsNemekh} disabled={props.disabledIngredients}     type="meat"   orts="Мах" />
         
     </div>
 );
