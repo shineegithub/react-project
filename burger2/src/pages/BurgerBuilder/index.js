@@ -3,6 +3,7 @@ import Burger from "../../components/Burger";
 import BuildControls from "../../components/BuildControls";
 // import { type } from "@testing-library/user-event/dist/type";
 
+const INGREDIENTS_PRICES = { salad: 150, cheese: 250, bacon: 800, meat: 1500};
 
 class BurgerBuilder extends Component {
 
@@ -12,20 +13,31 @@ class BurgerBuilder extends Component {
             cheese:0,
             bacon:0,
             meat:0,
-        }
+        },
+        totolPrice: 1000
     };
     ortsNemekh = (type) => {
         // console.log(type)
         const newIngredients = { ...this.state.ingredients };
         newIngredients[type]++;
-        this.setState({ ingredients: newIngredients });
+
+        const newPrice = this.state.totolPrice + INGREDIENTS_PRICES[type];
+
+        this.setState({ 
+            ingredients: newIngredients
+            , totolPrice: newPrice 
+        });
     };
 
     ortsHasakh = (type) => {
         if (this.state.ingredients[type] > 0) {
             const newIngredients = { ...this.state.ingredients };
             newIngredients[type]--;
-            this.setState({ ingredients: newIngredients });
+            const newPrice = this.state.totolPrice - INGREDIENTS_PRICES[type];
+            this.setState({ 
+                ingredients: newIngredients 
+                , totolPrice: newPrice 
+            });
         }
     };
 
@@ -37,7 +49,12 @@ class BurgerBuilder extends Component {
         return (
             <div>
                 <Burger orts={this.state.ingredients} />
-                <BuildControls disabledIngredients={disabledIngredients} ortsHasakh={this.ortsHasakh}  ortsNemekh={this.ortsNemekh}/>
+                <BuildControls 
+                    price={this.state.totolPrice}
+                    disabledIngredients={disabledIngredients} 
+                    ortsHasakh={this.ortsHasakh}  
+                    ortsNemekh={this.ortsNemekh}
+                />
             </div>
         );
     }
