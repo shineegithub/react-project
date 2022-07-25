@@ -2,16 +2,38 @@ import React from "react";
 import BuildControl from "../BuildControl";
 import css from "./style.module.css";
 
-const BuildControls = props => (
-    <div className={css.BuildControls}>
-        <p>Бургерйин үнэ : {props.price}</p>
-        <BuildControl ortsHasakh={props.ortsHasakh}  ortsNemekh={props.ortsNemekh} disabled={props.disabledIngredients}    type="salad"  orts="Салад" />
-        <BuildControl ortsHasakh={props.ortsHasakh}  ortsNemekh={props.ortsNemekh} disabled={props.disabledIngredients}    type="bacon"  orts="Гахайн мах" />
-        <BuildControl ortsHasakh={props.ortsHasakh}  ortsNemekh={props.ortsNemekh} disabled={props.disabledIngredients}   type="cheese" orts="Бяслаг" />
-        <BuildControl ortsHasakh={props.ortsHasakh}  ortsNemekh={props.ortsNemekh} disabled={props.disabledIngredients}     type="meat"   orts="Мах" />
+const BuildControls = props => {
+
+    const controls = {
+        bacon: "Гахайн мах",
+        cheese: "Бяслаг",
+        meat: "Үхрийн мах",
+        salad: "Салад",
+    };
+
+    return (
         
-    </div>
-);
+            <div className={css.BuildControls}>
+                <p>Бургерйин үнэ : <strong>{props.price}</strong></p>
+                {Object.keys(controls).map(el => (
+                    <BuildControl 
+                        key={el}
+                        ortsHasakh={props.ortsHasakh}  
+                        ortsNemekh={props.ortsNemekh} 
+                        disabled={props.disabledIngredients}    
+                        type={el}  
+                        orts={controls[el]}
+                    />
+                ))}
+
+                <button disalbled={props.disabled} className={css.OrderButton}>Захиалах</button>
+                
+                
+                
+            </div>
+        
+    )
+}
 
 
 
