@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Burger from "../../components/Burger";
 import BuildControls from "../../components/BuildControls";
 import Modal from "../../components/General/Modal";
+import OrderSummary from "../../components/OrderSummary";
 // import { type } from "@testing-library/user-event/dist/type";
 
 const INGREDIENTS_PRICES = { salad: 150, cheese: 250, bacon: 800, meat: 1500};
@@ -16,8 +17,18 @@ class BurgerBuilder extends Component {
             meat:0,
         },
         totolPrice: 1000,
-        purchasing: false
+        purchasing: false,
+        confirmOrder: false
     };
+
+    showConfirmModal = () => {
+        this.setState ({ confirmOrder: true });
+    };
+
+    closeConfirmModal = () => {
+        this.setState ({ confirmOrder: false });
+    };
+
     ortsNemekh = (type) => {
         // console.log(type)
         const newIngredients = { ...this.state.ingredients };
@@ -52,12 +63,19 @@ class BurgerBuilder extends Component {
         }
         return (
             <div>
-                <Modal>
-                    <h1>Та итгэлтэй байна уу...</h1>
-                    <p>Захиалгын дэлгэрэнгүй</p>
+                <Modal 
+                    closeConfirmModal={this.closeConfirmModal}
+                    show={this.state.confirmOrder} 
+                >
+                    <OrderSummary 
+                        //ingredientsNames = {INGREDIENT_NAMES}
+                        ingredients={this.state.ingredients}
+                    />
                 </Modal>
                 <Burger orts={this.state.ingredients} />
+
                 <BuildControls 
+                    showConfirmModal = {this.showConfirmModal}
                     disabled={!this.state.purchasing}
                     price={this.state.totolPrice}
                     disabledIngredients={disabledIngredients} 
