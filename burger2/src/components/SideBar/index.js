@@ -5,11 +5,12 @@ import Menu from "../Menu";
 import css from "./style.module.css";
 
 
-const SideBar = () => {
+const SideBar = (props) => {
+    let classes = [css.SideBar, css.Close];
     return (
         <div>
-            <Shadow show />
-            <div className={css.SideBar}>
+            <Shadow show={props.showSidebar} />
+            <div className={classes.join(" ")}>
                 <div className={css.Logo}>
                     <Logo />
                 </div>

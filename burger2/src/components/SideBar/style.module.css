@@ -7,6 +7,7 @@
     height: 100%;
     z-index: 200;
     padding: 32px 16px;
+    translation: transform 0.3s ease-out;
 }
 
 @media (min-width: 500px) {
@@ -15,6 +16,13 @@
     }
 }
 
+.Open {
+    transform: translateX(0);
+}
+
+.Close {
+    transform: translateX(-100%);
+}
 .logo {
     height: 15%;
     
