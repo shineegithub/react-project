@@ -5,7 +5,7 @@ import Shadow from "../Shadow";
 
 const modal = (props) => (
     <div>
-        <Shadow show={props.show} closeConfirmModal={props.closeConfirmModal} />
+        <Shadow show={props.show} onClick={props.closeConfirmModal} />
         <div 
             
             style={ {
